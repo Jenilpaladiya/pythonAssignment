@@ -1,223 +1,128 @@
-# Weather Dashboard – Phase 3
+You are a technical documentation writer.
 
-A responsive web application that shows **current weather** and a **5-day forecast** for any city using the OpenWeatherMap API.  
-The app is designed as a university project and focuses on **clean UI, responsive layout, and simple testable features**.
+Create a complete, well-structured GitHub README.md (Markdown) for my university project:
 
----
+Project Name: Weather Dashboard – Phase 3
 
-## Features
+Project Summary:
+A responsive web application that shows current weather and a 5-day forecast for any city using the OpenWeatherMap API. The focus is clean UI, responsive layout, and simple testable features.
 
-### 1. City Search
-- Search for any city by name using the search bar.
-- Press **Enter** or click the **Search** button to fetch data.
-- If the city is valid, current weather and the 5-day forecast are displayed.
+IMPORTANT OUTPUT RULES:
+- Output ONLY one single README.md content in Markdown.
+- Use proper headings, bullet points, code blocks, tables, and emojis where helpful (not excessive).
+- The README must be directly copy-pasteable into GitHub.
+- Include “How to Run (PHP Built-in Server)” clearly.
+- Include a screenshots section with working Markdown image placeholders.
+- Include an example test cases table.
+- Mention localStorage favourites behavior clearly.
+- Use clear, simple English suitable for university submission.
 
-### 2. Current Weather Card
-For the selected city, the app shows:
+CONTENT TO INCLUDE (use these details exactly):
 
-- City name  
-- Current date & time (from the user’s browser)  
-- Temperature (°C)  
-- Humidity (%)  
-- Wind speed (km/h)  
-- Weather icon (from OpenWeatherMap)  
+FEATURES
+1) City Search
+- Search any city by name
+- Enter key or Search button triggers fetch
+- Shows current weather + 5-day forecast on success
 
-A **default weather icon** is shown when the page first loads, and it is replaced by the real icon after the first successful API call.
+2) Current Weather Card
+- City name
+- Current date & time (from user’s browser)
+- Temperature (°C)
+- Humidity (%)
+- Wind speed (km/h)
+- Weather icon (OpenWeatherMap)
+- Default weather icon shown initially until first successful API call
 
-### 3. 5-Day Forecast
-- Forecast data is loaded from the `forecast.php` endpoint.
-- One card per day (5 cards total).
-- Each card includes:
-  - Day name (e.g., Fri, Sat, Sun)
-  - Weather icon
-  - Temperature (°C)
-  - Short description (e.g. *Clouds*, *Rain*, *Clear*).
+3) 5-Day Forecast
+- Loaded from forecast.php endpoint
+- 5 cards total, one per day
+- Day name, icon, temperature (°C), short description (Clouds/Rain/Clear)
 
-### 4. Favourite Cities
-- Three default favourite cities: **London**, **New York**, **Tokyo**.
-- After searching a city, you can click **“+ Add current city”** to save it as a favourite.
-- Favourites are rendered as buttons for quick access.
-- Each favourite has a small **`×` (cancel)** button to remove it.
-- Favourites are persisted using **`localStorage`** so they remain after a page refresh.
+4) Favourite Cities
+- Default: London, New York, Tokyo
+- After searching, user can click “+ Add current city” to save favourite
+- Favourites displayed as quick buttons
+- Each favourite has × button to remove
+- Persist favourites using localStorage
 
-### 5. Error Handling
-- If the user searches for an invalid city, the app:
-  - Shows a clear error message (e.g. *“City not found. Please try again.”*).
-  - Does not crash or break the layout.
-- Basic network error handling is included in the JavaScript `.catch(...)` blocks for both current weather and forecast.
+5) Error Handling
+- Invalid city → show message “City not found. Please try again.”
+- Does not crash/break layout
+- Network error handling in JS catch blocks for current weather and forecast
 
-### 6. Responsive Design
-- Layout is built with **Bootstrap** and custom CSS.
-- On **desktop**, forecast cards are shown in a row; on **mobile**, they stack vertically.
-- The main weather card, search bar, and favourites section all scale to different screen sizes.
-- Tested with Chrome DevTools device modes (e.g. iPhone, iPad, desktop).
+6) Responsive Design
+- Bootstrap + custom CSS
+- Desktop: forecast cards in row; Mobile: stacked vertically
+- Tested with Chrome DevTools (iPhone/iPad/Desktop)
 
----
+TECH STACK
+- Frontend: HTML5, CSS3, JavaScript (Vanilla), Bootstrap
+- Backend/API proxy: PHP (weather.php, forecast.php)
+- API: OpenWeatherMap (Current Weather + 5-Day / 3-Hour Forecast)
+- Storage: localStorage
+- Tools: VS Code, Chrome DevTools
 
-## Tech Stack
-
-- **Frontend:** HTML5, CSS3, JavaScript (vanilla), Bootstrap  
-- **Backend / API proxy:** PHP (`weather.php`, `forecast.php`)  
-- **Weather data:** [OpenWeatherMap](https://openweathermap.org/) (Current Weather + 5-Day / 3-Hour Forecast API)  
-- **Storage:** Browser `localStorage` for favourite cities  
-- **Tools:** VS Code, Chrome DevTools
-
----
-
-## Project Structure
-
-```text
+PROJECT STRUCTURE
 .
-├── index.html         # Main UI (search, weather card, forecast, favourites)
-├── weather.php        # PHP endpoint for current weather
-├── forecast.php       # PHP endpoint for 5-day forecast
+├── index.html
+├── weather.php
+├── forecast.php
+├── screenshots/ (optional)
 └── README.md
 
-
-Installation & Setup
-0. Check PHP Installation
-
-Open a terminal in macOS and run:
-
-php -v
-
-
-If you see a PHP version (e.g. PHP 8.x.x) → PHP is installed ✅
-
-If you see command not found: php → install PHP (for example with Homebrew):
-
-brew install php
-
-
-Then confirm again with php -v.
-
-1. Clone or Download the Project
-git clone https://github.com/<your-username>/<your-repo-name>.git
-cd <your-repo-name>
-
-
-Or download as ZIP and extract to a folder.
-
-2. Configure Your OpenWeatherMap API Key
-
-Open weather.php and forecast.php and set your API key:
-
-$apiKey = 'YOUR_API_KEY_HERE';
-
-
-Replace 'YOUR_API_KEY_HERE' with your real OpenWeatherMap API key:
-
-$apiKey = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
-
-
-⚠️ For public repositories this key is visible. For a student project this is usually acceptable, but be aware of the risk.
-
-3. How to Run the PHP Project (Built-in Server)
-
-From the project folder in the terminal:
-
-php -S localhost:8000
-
-
-You should see something like:
-
-PHP Development Server started
-Listening on http://localhost:8000
-Document root is /path/to/your/project
-
-
-🔴 Important: Keep this terminal window open while you are using the app.
-To stop the server later, press CTRL + C.
-
-4. Open the App in Your Browser
-
-Now open a browser (Chrome recommended) and go to:
-
-http://localhost:8000/index.html
-
-
-✅ Do not open the file as file:///Users/.../index.html –
-the JavaScript requests to weather.php and forecast.php only work via http://localhost:8000.
-
-5. Test the PHP Endpoints Directly (Optional)
-
-You can also check the PHP endpoints in the browser:
-
-Current weather:
-
-http://localhost:8000/weather.php?city=Berlin
-
-
-5-day forecast:
-
-http://localhost:8000/forecast.php?city=Berlin
-
-
-If everything is correct, you should see JSON output (a big { ... } object), not an error page.
-
-How to Use the App
-
-Search a city
-
-Type a city name (e.g., Berlin) in the input box.
-
-Click Search.
-
-Current weather and 5-day forecast appear.
-
-Add to favourites
-
-After a successful search, click “+ Add current city”.
-
-A new favourite button appears in the favourites list and is stored in localStorage.
-
-Open a favourite
-
-Click any favourite city button (e.g., London).
-
-The dashboard reloads weather & forecast for that city.
-
-Remove a favourite
-
-Click the small × icon on a favourite button.
-
-The city is removed from the list and from localStorage.
-
-Example Test Cases
-#	Scenario	Steps	Expected Result
-1	Search valid city	Type Berlin → click Search	Current weather and 5-day forecast for Berlin are displayed.
-2	Search invalid city	Type asdasd → click Search	Error message like “City not found. Please try again.” is shown.
-3	Empty input	Leave input empty → click Search	Message/alert asking user to enter a city name.
-4	Add city to favourites	Search Tokyo → click + Add current city	Tokyo button appears in favourites; city stored in localStorage.
-5	Prevent duplicate favourite	Add Tokyo again using + Add current city	No duplicate Tokyo button is created (duplicates are rejected).
-6	Remove favourite	Click × on the Tokyo favourite button	Tokyo button disappears; removed from localStorage.
-7	Persistence after refresh	Add a favourite → refresh browser	Favourite cities are restored from localStorage.
-8	Responsive mobile view	Open DevTools → choose mobile device → reload	Layout adapts to small screen; cards stack vertically and are readable.
-Screenshots (Add yours here)
-
-Create a folder screenshots/ in the repo and save images there.
-Then update the paths below.
-
-1. Desktop View (Normal State)
-![Desktop view – search + forecast](screenshots/desktop-view.png)
-
-
-Example: similar to the screenshot you sent where the app is running on http://localhost:8000 and shows the Weather Dashboard header, search bar, empty weather card, and default favourites (London, New York, Tokyo).
-
-2. Mobile View (Responsive)
-![Mobile view – responsive layout](screenshots/mobile-view.png)
-
-
-Example: open DevTools → device toolbar (e.g., iPhone 12) and take a screenshot showing the app stacked vertically.
-
-3. Forecast Section (5-Day Forecast Visible)
-![Forecast section – 5-day cards](screenshots/forecast-section.png)
-
-
-Example: after searching “Berlin” or “Tokyo”, scroll so the 5-day forecast cards are clearly visible.
-
-4. Error Case (Invalid City / Empty Input)
-![Error state – invalid city](screenshots/error-invalid-city.png)
-
-
-Example: type a nonsense city (e.g., asdqwe) and click Search so the error message (“City not found…” or similar) is visible. Take a screenshot of that state and save it as screenshots/error-invalid-city.png.
+INSTALLATION & SETUP
+0) Check PHP Installation (macOS)
+- php -v
+- If not installed: brew install php
+
+1) Clone or Download
+- git clone ...
+- OR download ZIP
+
+2) API Key Setup
+- Add API key in weather.php and forecast.php:
+  $apiKey = 'YOUR_API_KEY_HERE';
+- Mention security note about public repo exposure
+
+HOW TO RUN (PHP BUILT-IN SERVER)
+- From project folder: php -S localhost:8000
+- Keep terminal open; CTRL+C to stop
+- Open: http://localhost:8000/index.html
+- Do not open file:///... because PHP endpoints require http://localhost
+
+OPTIONAL ENDPOINT TESTING
+- http://localhost:8000/weather.php?city=Berlin
+- http://localhost:8000/forecast.php?city=Berlin
+- Expect JSON output
+
+HOW TO USE
+- Search city
+- Add favourite
+- Open favourite
+- Remove favourite
+
+TEST CASES TABLE (8 rows)
+Include scenarios: valid city, invalid city, empty input, add favourite, prevent duplicate, remove favourite, persistence after refresh, responsive mobile view.
+
+SCREENSHOTS SECTION
+- Add a section “Screenshots”
+- Include 4 placeholder images using Markdown, and assume images are in /screenshots folder:
+  1) desktop-view.png
+  2) mobile-view.png
+  3) forecast-section.png
+  4) error-invalid-city.png
+- Include 1–2 short lines explaining how to capture screenshots in Chrome DevTools
+
+TROUBLESHOOTING
+- API errors: check API key, check server running, open via localhost
+- Favourites not saving: check storage blocked, avoid private mode
+
+CREDITS
+- OpenWeatherMap
+- Bootstrap
+
+LICENSE
+- Educational/University project
+
+Finally: Make the README clean, professional, and complete.
