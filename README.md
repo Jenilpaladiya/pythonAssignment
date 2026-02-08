@@ -1,6 +1,6 @@
 
-## 3) Add output (what terminal shows)
+## 4) Inline command (single short command in a sentence)
+Use single backticks:
+
 ```markdown
-```text
-PHP Development Server started
-Listening on http://localhost:8000
+Run `php -S localhost:8000` and open the link.
