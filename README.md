@@ -1,3 +1,17 @@
+
+A reproducible **batch-processing** data architecture using **Docker Compose + PostgreSQL + Python microservices**:
+- **postgres** service: data storage (warehouse)
+- **ingestion** service: loads raw CSV files into `retail_raw` (chunked)
+- **processing** service: creates analytics tables:
+  - `daily_metrics`
+  - `top_products_daily`
+  - `customer_features_quarterly`
+- **serving** service: provides a simple **dashboard** and **API** via FastAPI:
+  - `/dashboard` (HTML)
+  - `/docs` (Swagger UI)
+  - `/metrics/daily` (JSON)
+  - `/metrics/top-products` (JSON)
+
 # Data Engineering Portfolio (DLMDSEDE02) — Batch Processing Pipeline
 
 A reproducible **batch-processing** data architecture using **Docker Compose + PostgreSQL + Python microservices**:
